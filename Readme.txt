@@ -1,0 +1,1 @@
+http://identityserver.github.io/Documentation/docs/overview/simplestOAuth.html
