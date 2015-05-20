@@ -3241,6 +3241,49 @@
             <param name="codePoint">The code point whose validity is to be checked.</param>
             <returns>True if the input is a valid Unicode scalar value, false otherwise.</returns>
         </member>
+        <member name="T:Owin.OwinExtensions">
+            <summary>
+            Extension methods for configuring Autofac within the OWIN pipeline.
+            </summary>
+        </member>
+        <member name="M:Owin.OwinExtensions.UseAutofacMiddleware(Owin.IAppBuilder,Autofac.ILifetimeScope)">
+            <summary>
+            Adds a component to the OWIN pipeline for using Autofac dependency injection with middleware.
+            </summary>
+            <param name="app">The application builder.</param>
+            <param name="container">The Autofac application lifetime scope/container.</param>
+            <returns>The application builder.</returns>
+        </member>
+        <member name="F:Autofac.Integration.Owin.Constants.OwinLifetimeScopeKey">
+            <summary>
+            The OWIN key for the current lifetime scope.
+            </summary>
+        </member>
+        <member name="T:Autofac.Integration.Owin.OwinContextExtensions">
+            <summary>
+            Extension methods for using Autofac within an OWIN context.
+            </summary>
+        </member>
+        <member name="M:Autofac.Integration.Owin.OwinContextExtensions.GetAutofacLifetimeScope(Microsoft.Owin.IOwinContext)">
+            <summary>
+            Gets the current Autofac lifetime scope from the OWIN context.
+            </summary>
+            <param name="context">The OWIN context.</param>
+            <returns>The current lifetime scope.</returns>
+        </member>
+        <member name="T:Owin.AutofacWebApiAppBuilderExtensions">
+            <summary>
+            Extension methods for configuring the OWIN pipeline.
+            </summary>
+        </member>
+        <member name="M:Owin.AutofacWebApiAppBuilderExtensions.UseAutofacWebApi(Owin.IAppBuilder,System.Web.Http.HttpConfiguration)">
+            <summary>
+            Extends the Autofac lifetime scope added from the OWIN pipeline through to the Web API dependency scope.
+            </summary>
+            <param name="app">The application builder.</param>
+            <param name="configuration">The HTTP server configuration.</param>
+            <returns>The application builder.</returns>
+        </member>
         <member name="T:Thinktecture.IdentityServer.Core.Configuration.LoginPageLink">
             <summary>
             Represents a link on the login page
@@ -6387,6 +6430,19 @@
             login
             </exception>
         </member>
+        <member name="M:Thinktecture.IdentityServer.Core.Extensions.OwinExtensions.GetSignInMessage(System.Collections.Generic.IDictionary{System.String,System.Object},System.String)">
+            <summary>
+            Gets the sign in message.
+            </summary>
+            <param name="env">The OWIN environment.</param>
+            <param name="id">The signin identifier.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">
+            env
+            or
+            id
+            </exception>
+        </member>
         <member name="M:Thinktecture.IdentityServer.Core.Extensions.OwinExtensions.GetRequestId(System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
             Gets the current request identifier.
@@ -7531,7 +7587,7 @@
         </member>
         <member name="M:Thinktecture.IdentityServer.Core.Services.IClaimsProvider.GetAccessTokenClaimsAsync(System.Security.Claims.ClaimsPrincipal,Thinktecture.IdentityServer.Core.Models.Client,System.Collections.Generic.IEnumerable{Thinktecture.IdentityServer.Core.Models.Scope},Thinktecture.IdentityServer.Core.Validation.ValidatedRequest)">
             <summary>
-            Returns claims for an identity token.
+            Returns claims for an access token.
             </summary>
             <param name="subject">The subject.</param>
             <param name="client">The client.</param>
